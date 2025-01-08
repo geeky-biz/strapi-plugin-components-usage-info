@@ -1,5 +1,4 @@
-import controller from './controller';
-
+import componentsInfoController from './componentsInfoController';
 export default {
-  controller,
+  componentsInfoController,
 };

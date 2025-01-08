@@ -1,1 +1,6 @@
-{}
+{
+  "plugin.name": "Components Usage Information",
+  "plugin.cta.back-to-options": "Back To Options",
+  "plugin.cta.cancel": "Cancel",
+  "plugin.cta.close": "Close"
+}
