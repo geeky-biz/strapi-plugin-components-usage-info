@@ -30,6 +30,7 @@ const controller = ({ strapi }) => ({
                     if (dynCompList.includes(componentToLookFor.uid)) {
                       collectionsContainingComponentDefinition.push({
                         uid: selectedCollection.uid,
+                        displayName: selectedCollection?.info?.displayName || selectedCollection.uid,
                         definition : selectedCollection,
                         matchingAttributeName: attribute,
                         matchType: 'dynamiczone'
@@ -40,6 +41,7 @@ const controller = ({ strapi }) => ({
                   else if (selCollAttributes[attribute].type === 'component' && selCollAttributes[attribute].component === componentToLookFor.uid) {
                     collectionsContainingComponentDefinition.push({
                       uid: selectedCollection.uid,
+                      displayName: selectedCollection?.info?.displayName || selectedCollection.uid, 
                       definition : selectedCollection,
                       matchingAttributeName: attribute,
                       matchType: 'component'
@@ -76,6 +78,7 @@ const controller = ({ strapi }) => ({
                           if (!itemAdded) {
                             collectionsContainingComponentData.push({
                               'uid' : curCollection.uid,
+                              'collection_display_name' : curCollection.displayName,
                               'data' : {
                                 documentId: item.documentId,
                                 locales: [item.locale]
@@ -101,6 +104,7 @@ const controller = ({ strapi }) => ({
                           if (!itemAdded) {
                             collectionsContainingComponentData.push({
                               'uid' : curCollection.uid,
+                              'collection_display_name' : curCollection.displayName,
                               'data' : {
                                 documentId: item.documentId,
                                 locales: [item.locale]
