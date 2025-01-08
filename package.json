@@ -1,0 +1,61 @@
+{
+  "version": "0.0.0",
+  "keywords": [],
+  "type": "commonjs",
+  "exports": {
+    "./package.json": "./package.json",
+    "./strapi-admin": {
+      "source": "./admin/src/index.js",
+      "import": "./dist/admin/index.mjs",
+      "require": "./dist/admin/index.js",
+      "default": "./dist/admin/index.js"
+    },
+    "./strapi-server": {
+      "source": "./server/src/index.js",
+      "import": "./dist/server/index.mjs",
+      "require": "./dist/server/index.js",
+      "default": "./dist/server/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "strapi-plugin build",
+    "watch": "strapi-plugin watch",
+    "watch:link": "strapi-plugin watch:link",
+    "verify": "strapi-plugin verify"
+  },
+  "dependencies": {
+    "@strapi/design-system": "^2.0.0-rc.14",
+    "@strapi/icons": "^2.0.0-rc.14",
+    "react-intl": "^7.1.0"
+  },
+  "devDependencies": {
+    "@strapi/strapi": "^5.6.0",
+    "@strapi/sdk-plugin": "^5.3.0",
+    "prettier": "^3.4.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.1",
+    "styled-components": "^6.1.14"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^5.6.0",
+    "@strapi/sdk-plugin": "^5.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.1",
+    "styled-components": "^6.1.14"
+  },
+  "strapi": {
+    "kind": "plugin",
+    "name": "strapi-plugin-components-usage-info",
+    "displayName": "Components Usage Info",
+    "description": "Find out the collections where a selected component is populated with data."
+  },
+  "name": "strapi-plugin-components-usage-info",
+  "description": "Find out the collections where a selected component is populated with data.",
+  "license": "MIT",
+  "author": "Punit Sethi <punit@tezify.com>"
+}
