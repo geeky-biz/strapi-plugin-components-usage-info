@@ -37,7 +37,6 @@ const HomePage = () => {
     });
   }, []);
   const fetchContainingCollections = async (componentUid) => {
-    console.log('yes');
     return get(apiGetContainingCollections(componentUid))
     .then((resp) => resp.data)
     .then(setContainingCollections);
@@ -103,7 +102,11 @@ const HomePage = () => {
                       </Td>
                       <Td><Typography size="14px">{collection.uid.split('.')[1]}</Typography></Td>
                       <Td><Typography size="14px">{collection.data.documentId}</Typography></Td>
-                      <Td><Typography size="14px">{collection.data.locale}</Typography></Td>
+                      <Td><Typography size="14px">{
+                        collection.data.locales.map((l, idx) => {
+                          const suffix = idx < collection.data.locales.length - 1 ? ", " : "";
+                          return (l + suffix);
+                        })}</Typography></Td>
                     </Tr>
                   ))
                 }
