@@ -21,6 +21,8 @@ const HomePage = () => {
   const [allComponents, setAllComponents] = useState([]);
   const [containingCollections, setContainingCollections] = useState([]);
   const [displayComponentsFilterText, setDisplayFilterComponentsText] = useState("");
+  const [collectionsLoading, setCollectionsLoading] = useState(false);
+  const [selectedComponent, setSelectedComponent] = useState(null);
   const { get } = useFetchClient();
   const navigate = useNavigate();
 
@@ -37,9 +39,19 @@ const HomePage = () => {
     });
   }, []);
   const fetchContainingCollections = async (componentUid) => {
+    setSelectedComponent(componentUid);
+    setCollectionsLoading(true);
     return get(apiGetContainingCollections(componentUid))
     .then((resp) => resp.data)
-    .then(setContainingCollections);
+    .then((data) => {
+      setCollectionsLoading(false);
+      setContainingCollections(data);
+    })
+    .catch((err) => {
+      console.log('An eror is countered while fetching containing collections');
+      console.log(err);
+      setCollectionsLoading(false);
+    });
   };
   return (
     <Page.Main>
@@ -76,7 +88,22 @@ const HomePage = () => {
         </Box>
       }
       {
-        containingCollections.length > 0 && (
+        collectionsLoading == true && <Loader />
+      }
+      {
+        collectionsLoading == false && containingCollections.length === 0 && 
+        selectedComponent !== null && (
+          <Box paddingTop={4} paddingBottom={4}>
+            <Typography variant="gamma">
+              {
+                `No collections contain data with the selected component ${selectedComponent}.`
+              }
+            </Typography>
+          </Box>
+        )
+      }
+      {
+        collectionsLoading == false && containingCollections.length > 0 && (
           <Box paddingTop={4} paddingBottom={4}>
             <Table>
               <Thead>
