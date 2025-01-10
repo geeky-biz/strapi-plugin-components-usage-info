@@ -21,6 +21,7 @@ When identifying if a component is populated within a certain record:
 - If the selected component is directly not part of a collection, but instead part of another component that belongs to the collection, such relationships (upto any depth level) are taken into consideration.
 - Locales are also taken into consideration and displayed.
 - Only published records are considered. Draft versions or older versions of the records are not considered.
+- This plugin works with Strapi v5.0.0 onwards. It does not support earlier Strapi versions.
 
 ## Bugs
 For any bugs, please create an issue [here](https://github.com/geeky-biz/strapi-plugin-components-usage-info/issues).
