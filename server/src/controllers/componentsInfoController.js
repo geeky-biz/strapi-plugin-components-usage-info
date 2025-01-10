@@ -227,11 +227,23 @@ const deduplicateRowsByDocumentId = (collectionsList) => {
   return Array.from(map.values());
 }
 
+const getMainFieldForCollection = async (collectionUid) => {
+  const contentType = await strapi.plugin('content-manager').service('content-types').findContentType(collectionUid);
+  if (!contentType)
+    return null;
+  const configuration = await strapi.plugin('content-manager').service('content-types').findConfiguration(contentType);
+  if (configuration?.settings?.mainField)
+    return configuration.settings.mainField
+  else
+    return null;
+}
+
 const getCollectionsHavingComponentData = async (collectionObject, componentToLookFor) => {
   const collectionsContainingComponentData = [];
   const locales = await strapi.plugin('i18n').service('locales').find();
   const localeCodes = locales.map(l => l.code);
   const curCollection = collectionObject;
+  const mainField = await getMainFieldForCollection(curCollection.uid);
   for (let w=0; w< localeCodes.length; w++) {
     const allItems = await strapi.documents(curCollection.uid).findMany({
           populate: curCollection.matchType === 'dynamiczone' ? {
@@ -263,6 +275,10 @@ const getCollectionsHavingComponentData = async (collectionObject, componentToLo
                 'collection_display_name' : curCollection.displayName,
                 'data' : {
                   documentId: item.documentId,
+                  mainField: Object.keys(item).includes(mainField) && 
+                  item[mainField] && 
+                  typeof item[mainField] === "string" ?
+                  item[mainField] : null,                  
                   locales: [item.locale]
                 }
               });  
@@ -285,6 +301,10 @@ const getCollectionsHavingComponentData = async (collectionObject, componentToLo
                 'collection_display_name' : curCollection.displayName,
                 'data' : {
                   documentId: item.documentId,
+                  mainField: Object.keys(item).includes(mainField) && 
+                  item[mainField] && 
+                  typeof item[mainField] === "string" ?
+                  item[mainField] : null,                  
                   locales: [item.locale]
                 }
               });  
@@ -313,6 +333,10 @@ const getCollectionsHavingComponentData = async (collectionObject, componentToLo
                     'collection_display_name' : curCollection.displayName,
                     'data' : {
                       documentId: item.documentId,
+                      mainField: Object.keys(item).includes(mainField) && 
+                      item[mainField] && 
+                      typeof item[mainField] === "string" ?
+                      item[mainField] : null,                      
                       locales: [item.locale]
                     }
                   });  

@@ -110,7 +110,7 @@ const HomePage = () => {
                 <Tr>
                   <Th><Typography size="14px">Edit</Typography></Th>
                   <Th><Typography size="14px">Collection</Typography></Th>
-                  <Th><Typography size="14px">Document ID</Typography></Th>
+                  <Th><Typography size="14px">Main Field / Document ID</Typography></Th>
                   <Th><Typography size="14px">Locale</Typography></Th>
                 </Tr>
               </Thead>
@@ -124,7 +124,7 @@ const HomePage = () => {
                         </TooltipIconButton>
                       </Td>
                       <Td><Typography size="14px">{collection.collection_display_name}</Typography></Td>
-                      <Td><Typography size="14px">{collection.data.documentId}</Typography></Td>
+                      <Td><Typography size="14px">{collection.data.mainField || collection.data.documentId}</Typography></Td>
                       <Td><Typography size="14px">{
                         collection.data.locales.map((l, idx) => {
                           const suffix = idx < collection.data.locales.length - 1 ? ", " : "";
