@@ -2,6 +2,34 @@
 
 A Strapi plugin to find out the collections where a selected component is populated with data.
 
+## Installation
+
+via npm:
+
+```
+npm i strapi-plugin-components-usage-info
+```
+
+via yarn:
+
+```
+yarn add strapi-plugin-components-usage-info
+```
+
+## Plugin Configuration
+
+Within your Strapi v5 project's `config/plugin.js`, enable the plugin:
+
+```
+module.exports = {
+    // ...
+    "strapi-plugin-components-usage-info" : {
+      enabled: true
+    },
+    // ...
+  }
+```
+
 ## What problem does this plugin solve?
 
 When trying to identify if a certain component is populated with any data anywhere within that setup, this plugin can be used to quickly find this information. This can be useful for analysis before:

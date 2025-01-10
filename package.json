@@ -1,6 +1,10 @@
 {
-  "version": "0.0.0",
-  "keywords": [],
+  "name": "strapi-plugin-components-usage-info",
+  "description": "Find out the collections where a selected component is populated with data.",
+  "license": "MIT",
+  "author": "Punit Sethi <punit@tezify.com>",
+  "version": "0.0.1",
+  "keywords": ["strapi"],
   "type": "commonjs",
   "exports": {
     "./package.json": "./package.json",
@@ -53,9 +57,5 @@
     "name": "strapi-plugin-components-usage-info",
     "displayName": "Components Usage Info",
     "description": "Find out the collections where a selected component is populated with data."
-  },
-  "name": "strapi-plugin-components-usage-info",
-  "description": "Find out the collections where a selected component is populated with data.",
-  "license": "MIT",
-  "author": "Punit Sethi <punit@tezify.com>"
+  }
 }
