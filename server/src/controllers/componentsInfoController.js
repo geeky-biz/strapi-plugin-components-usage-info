@@ -321,10 +321,16 @@ const getCollectionsHavingComponentData = async (collectionObject, componentToLo
           }        
         }
   }
-  return collectionsContainingComponentData;
+  return handleNullLocales(collectionsContainingComponentData);
 }
   
-
+const handleNullLocales = (collectionList) => {
+  return collectionList.map(c => {
+    const result = {...c};
+    result.data.locales = result.data.locales.filter(i => i !== null);
+    return result;
+  });
+}
 
 const controller = ({ strapi }) => ({
     listComponents(ctx) {
