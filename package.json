@@ -3,7 +3,7 @@
   "description": "Find out the collections where a selected component is populated with data.",
   "license": "MIT",
   "author": "Punit Sethi <punit@tezify.com>",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": ["strapi"],
   "type": "commonjs",
   "exports": {
