@@ -56,7 +56,7 @@ const HomePage = () => {
   return (
     <Page.Main>
       <Page.Title>Components Usage Information</Page.Title>
-      <Box padding={10}>
+      <Box padding={10} minHeight="100vh" position="relative">
         <Typography tag="h1" variant="alpha">
           Components Usage Information
         </Typography>
@@ -136,6 +136,15 @@ const HomePage = () => {
               </Tbody>
             </Table>
           </Box>
+        )
+      }
+      {
+        containingCollections.length == 0 && (
+          <Box width="40vw" position="absolute" bottom={10} left={10} padding={4} background="neutral0">
+          <Typography>
+          For bugs or feature requests related to this plugin, please email on punit@tezify.com
+          </Typography>
+        </Box>  
         )
       }
       </Box>
